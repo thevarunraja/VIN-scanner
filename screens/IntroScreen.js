@@ -3,17 +3,18 @@ import { View } from 'react-native';
 
 import { Title } from '../components/Typography';
 import { PrimaryBtn } from '../components/Buttons';
+import Layout from '../components/Layout';
 
 export default function IntroScreen(props) {
   return (
-    <View style={{ marginTop: 20 }}>
+    <Layout>
       <Title>Welcome Screen</Title>
-      <View style={{ marginTop: 40 }}>
+      <View style={{ marginTop: 30 }}>
         <PrimaryBtn onPress={() => props.navigation.navigate(`ScannerScreen`)}>
           Scan Barcode
         </PrimaryBtn>
       </View>
-    </View>
+    </Layout>
   );
 }
 

@@ -13,7 +13,8 @@ const AppStackNavigator = createStackNavigator(
       transitionSpec: {
         duration: 0 // Set the animation duration time as 0 !!
       }
-    })
+    }),
+    cardShadowEnabled: false
   }
 );
 

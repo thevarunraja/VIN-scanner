@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Text } from 'react-native-paper';
+import { Button, Text, IconButton } from 'react-native-paper';
 
 import { useTheme } from '../Theme';
+import ArrowLeft from '../../svg/ArrowLeft';
 
 PrimaryBtn.propTypes = {
   children: PropTypes.string.isRequired,
@@ -42,4 +43,12 @@ export function OutlineBtn(props) {
       </Text>
     </Button>
   );
+}
+
+BackButton.propTypes = {
+  style: PropTypes.object
+};
+export function BackButton(props) {
+  const { style, ...rest } = props;
+  return <IconButton icon={() => <ArrowLeft stroke="#000" />} style={{ ...style }} {...rest} />;
 }

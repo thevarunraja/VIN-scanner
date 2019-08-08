@@ -46,11 +46,7 @@ export default function App() {
     <PaperProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flex: 1, paddingLeft: 15, paddingRight: 15 }}>
-              {fontLoaded && <Navigation />}
-            </View>
-          </SafeAreaView>
+          <View style={{ flex: 1 }}>{fontLoaded && <Navigation />}</View>
         </AuthProvider>
       </ThemeProvider>
     </PaperProvider>
