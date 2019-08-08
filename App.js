@@ -8,7 +8,7 @@ import IntroScreen from './screens/IntroScreen';
 
 const theme = {
   ...DefaultTheme,
-  roundness: 3,
+  roundness: 2,
   colors: {
     ...DefaultTheme.colors,
     primary: '#ff1744',
