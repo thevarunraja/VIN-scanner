@@ -5,7 +5,6 @@ import { Title } from '../components/Typography';
 import { PrimaryBtn } from '../components/Buttons';
 
 export default function IntroScreen(props) {
-  console.log(props);
   return (
     <View style={{ marginTop: 20 }}>
       <Title>Welcome Screen</Title>
