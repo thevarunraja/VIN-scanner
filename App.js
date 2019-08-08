@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 
 import { ThemeProvider } from './components/Theme';
 import { AuthProvider } from './components/Auth';
-import IntroScreen from './screens/IntroScreen';
+import Navigation from './Navigation';
 
 const theme = {
   ...DefaultTheme,
@@ -48,7 +48,7 @@ export default function App() {
         <AuthProvider>
           <SafeAreaView style={{ flex: 1 }}>
             <View style={{ flex: 1, paddingLeft: 15, paddingRight: 15 }}>
-              {fontLoaded && <IntroScreen />}
+              {fontLoaded && <Navigation />}
             </View>
           </SafeAreaView>
         </AuthProvider>
