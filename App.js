@@ -4,6 +4,7 @@ import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import * as Font from 'expo-font';
 
 import { ThemeProvider } from './components/Theme';
+import { AuthProvider } from './components/Auth';
 import IntroScreen from './screens/IntroScreen';
 
 const theme = {
@@ -44,11 +45,13 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <ThemeProvider theme={theme}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <View style={{ flex: 1, paddingLeft: 15, paddingRight: 15 }}>
-            {fontLoaded && <IntroScreen />}
-          </View>
-        </SafeAreaView>
+        <AuthProvider>
+          <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ flex: 1, paddingLeft: 15, paddingRight: 15 }}>
+              {fontLoaded && <IntroScreen />}
+            </View>
+          </SafeAreaView>
+        </AuthProvider>
       </ThemeProvider>
     </PaperProvider>
   );
