@@ -13,6 +13,7 @@
     "package-lock.json": true,
     ".prettierrc": true,
     ".gitignore": true,
-    "app.json": true
+    "app.json": true,
+    ".vscode": true
   }
 }
