@@ -60,7 +60,7 @@ export function Title(props) {
   const { theme } = useTheme();
   const { style, ...rest } = props;
   return (
-    <PaperTitle style={{ fontSize: 24, fontFamily: `${theme.fonts.medium}`, ...style }} {...rest}>
+    <PaperTitle style={{ fontSize: 26, fontFamily: `${theme.fonts.medium}`, ...style }} {...rest}>
       {props.children}
     </PaperTitle>
   );
