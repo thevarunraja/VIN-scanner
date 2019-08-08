@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import * as Font from 'expo-font';
 
