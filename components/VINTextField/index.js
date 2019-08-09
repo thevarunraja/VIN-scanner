@@ -1,17 +1,28 @@
 import React from 'react';
 import { View } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import axios from 'axios';
 
-import { Subheading } from '../Typography';
 import { PrimaryBtn } from '../Buttons';
+import { Text } from '../Typography';
+import HelperCard from '../HelperCard';
 
 export default function Index() {
   const [vinValue, setVinValue] = React.useState('');
   const [buttonWidth, setButtonWidth] = React.useState(10);
-
   const measureWidth = event => {
     setButtonWidth(event.nativeEvent.layout.width);
-    console.log('width: ', event.nativeEvent.layout.width);
+  };
+
+  const decodeVIN = async () => {
+    try {
+      const res = await axios.get(
+        `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vinValue.trim()}?format=json`
+      );
+      console.log(res.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -21,12 +32,20 @@ export default function Index() {
         label="Enter VIN"
         value={vinValue}
         onChangeText={text => {
-          setVinValue(text);
+          setVinValue(text.slice(0, 18).replace(/[^\w\s]/gi, ''));
         }}
         style={{
           paddingRight: buttonWidth
         }}
       />
+      <HelperCard>
+        VIN Number should contain
+        <Text small bold primary>
+          {' '}
+          10-18 alpha numeric characters
+        </Text>
+        , no spaces or dashes.
+      </HelperCard>
       <View
         style={{
           position: `absolute`,
@@ -37,7 +56,14 @@ export default function Index() {
           marginRight: 4
         }}
         onLayout={event => measureWidth(event)}>
-        <PrimaryBtn height={50}>Decode</PrimaryBtn>
+        <PrimaryBtn
+          height={50}
+          disabled={!(vinValue.length >= 10)}
+          onPress={() => {
+            decodeVIN();
+          }}>
+          Decode
+        </PrimaryBtn>
       </View>
     </View>
   );

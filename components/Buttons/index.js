@@ -11,14 +11,21 @@ PrimaryBtn.propTypes = {
 };
 export function PrimaryBtn(props) {
   const { theme } = useTheme();
-  const { style, height, ...rest } = props;
+  const { style, height, disabled, ...rest } = props;
   return (
     <Button
       mode="contained"
       contentStyle={{ height: height ? height : 45 }}
       style={{ borderRadius: 2, ...style }}
+      disabled={disabled}
       {...rest}>
-      <Text style={{ color: `${theme.colors.white}`, fontFamily: `OpenSans600`, fontSize: 18 }}>
+      <Text
+        style={{
+          color: disabled ? `${theme.colors.text}` : `${theme.colors.white}`,
+          opacity: disabled ? 0.3 : 1,
+          fontFamily: `OpenSans600`,
+          fontSize: 18
+        }}>
         {props.children}
       </Text>
     </Button>
