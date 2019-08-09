@@ -45,9 +45,9 @@ export default function HelpModal({ dispatch, showHelpModal }) {
         </View>
         <View style={{ flex: 1, backgroundColor: `#fff`, padding: 15 }}>
           <Subheading>Scanning Tips</Subheading>
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 15 }}>
             <Text>1. Hold the Camera steady and try to center the code you're scanning</Text>
-            <Text style={{ marginTop: 5 }}>
+            <Text style={{ marginTop: 10 }}>
               2. Try turning on the flash if it's too dark to scan.
             </Text>
           </View>
