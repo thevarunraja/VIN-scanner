@@ -6,7 +6,6 @@ import { Text } from '../Typography';
 
 export default function index(props) {
   const { theme } = useTheme();
-  console.log(props.children);
   const { style } = props;
   return (
     <View
