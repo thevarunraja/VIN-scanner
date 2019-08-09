@@ -82,7 +82,7 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
             bottom: 0,
             height: 140,
             width: `100%`,
-            backgroundColor: `#fff`
+            backgroundColor: `${theme.colors.background}`
           }}>
           <SafeAreaView style={{ flex: 1 }}>
             <View

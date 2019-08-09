@@ -10,17 +10,18 @@ import PropTypes from 'prop-types';
 import { useTheme } from '../Theme';
 
 Text.propTypes = {
-  children: PropTypes.string.isRequired,
   style: PropTypes.object,
-  bold: PropTypes.bool
+  bold: PropTypes.bool,
+  small: PropTypes.bool
 };
 export function Text(props) {
   const { theme } = useTheme();
-  const { style, bold, ...rest } = props;
+  const { style, bold, small, primary, ...rest } = props;
   return (
     <PaperText
       style={{
-        fontSize: 17,
+        fontSize: small ? 14 : 17,
+        color: primary ? `${theme.colors.primary}` : `${theme.colors.text}`,
         fontFamily: bold ? `${theme.fonts[600]}` : `${theme.fonts.regular}`,
         ...style
       }}

@@ -12,7 +12,7 @@ export default function HelpModal({ dispatch, showHelpModal }) {
   const { theme } = useTheme();
   return (
     <Modal
-      style={{ flex: 1, backgroundColor: '#fff', margin: 0 }}
+      style={{ flex: 1, backgroundColor: `${theme.colors.background}`, margin: 0 }}
       isVisible={showHelpModal}
       animationIn="slideInRight"
       animationOut="slideOutRight">
@@ -39,11 +39,11 @@ export default function HelpModal({ dispatch, showHelpModal }) {
               />
             </View>
             <View>
-              <Title style={{ color: `#fff` }}>Scanner Help</Title>
+              <Title style={{ color: `${theme.colors.white}` }}>Scanner Help</Title>
             </View>
           </View>
         </View>
-        <View style={{ flex: 1, backgroundColor: `#fff`, padding: 15 }}>
+        <View style={{ flex: 1, backgroundColor: `${theme.colors.background}`, padding: 15 }}>
           <Subheading>Scanning Tips</Subheading>
           <View style={{ marginTop: 15 }}>
             <Text>1. Hold the Camera steady and try to center the code you're scanning</Text>

@@ -17,7 +17,8 @@ const theme = {
     text: '#000',
     white: `#fff`,
     placeholder: `#55618f`,
-    background: '#fff'
+    background: '#fff',
+    lightBackground: `#f8f8f8`
   },
   fonts: {
     ...DefaultTheme.fonts,
