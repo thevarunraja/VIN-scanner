@@ -1,14 +1,9 @@
 import React from 'react';
 
-import { Title } from '../components/Typography';
-import Layout from '../components/Layout';
+import Scanner from '../components/Scanner';
 
 export default function ScannerScreen(props) {
-  return (
-    <Layout backButtonScreenName="IntroScreen" navigation={props.navigation}>
-      <Title>Scanner Screen</Title>
-    </Layout>
-  );
+  return <Scanner navigation={props.navigation} />;
 }
 
 ScannerScreen.navigationOptions = {

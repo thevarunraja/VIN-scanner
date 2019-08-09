@@ -9,11 +9,6 @@ const AppStackNavigator = createStackNavigator(
     ScannerScreen
   },
   {
-    transitionConfig: () => ({
-      transitionSpec: {
-        duration: 0 // Set the animation duration time as 0 !!
-      }
-    }),
     cardShadowEnabled: false
   }
 );

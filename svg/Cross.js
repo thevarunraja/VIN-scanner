@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Line } from 'react-native-svg';
 
 const SvgComponent = props => (
   <Svg
@@ -11,9 +11,10 @@ const SvgComponent = props => (
     strokeWidth={2}
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="prefix__feather prefix__feather-arrow-left"
+    className="feather feather-x"
     {...props}>
-    <Path d="M19 12H5M12 19l-7-7 7-7" />
+    <Line x1={18} y1={6} x2={6} y2={18} />
+    <Line x1={6} y1={6} x2={18} y2={18} />
   </Svg>
 );
 
