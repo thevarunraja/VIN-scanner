@@ -11,12 +11,20 @@ import { useTheme } from '../Theme';
 
 Text.propTypes = {
   children: PropTypes.string.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  bold: PropTypes.bool
 };
 export function Text(props) {
-  const { style, ...rest } = props;
+  const { theme } = useTheme();
+  const { style, bold, ...rest } = props;
   return (
-    <PaperText style={{ fontSize: 17, ...style }} {...rest}>
+    <PaperText
+      style={{
+        fontSize: 17,
+        fontFamily: bold ? `${theme.fonts[600]}` : `${theme.fonts.regular}`,
+        ...style
+      }}
+      {...rest}>
       {props.children}
     </PaperText>
   );
