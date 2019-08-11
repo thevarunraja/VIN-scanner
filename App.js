@@ -2,10 +2,14 @@ import React from 'react';
 import { View } from 'react-native';
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import * as Font from 'expo-font';
+import * as firebase from 'firebase';
 
 import { ThemeProvider } from './components/Theme';
 import { AuthProvider } from './components/Auth';
 import Navigation from './Navigation';
+import firebaseConfig from './firebaseConfig';
+
+firebase.initializeApp(firebaseConfig);
 
 const theme = {
   ...DefaultTheme,
