@@ -3,13 +3,15 @@ import { View } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 
+import EnterVINModal from './EnterVINModal';
 import HelpModal from './HelpModal';
 import Scan from './Scan';
 import {
   TOGGLE_FLASH,
   SET_IS_SCANNING,
   SET_SHOW_HELP_MODAL,
-  SET_HAS_CAMERA_PERMISSION
+  SET_HAS_CAMERA_PERMISSION,
+  SET_SHOW_ENTER_VIN_MODAL
 } from './actionTypes';
 
 const initialState = {
@@ -17,7 +19,8 @@ const initialState = {
   cameraType: Camera.Constants.Type.back,
   toggleFlash: Camera.Constants.FlashMode.off,
   isScanning: true,
-  showHelpModal: false
+  showHelpModal: false,
+  showEnterVINModal: false
 };
 
 function reducer(state = {}, { type, payload }) {
@@ -42,12 +45,17 @@ function reducer(state = {}, { type, payload }) {
         ...state,
         showHelpModal: payload
       };
+    case SET_SHOW_ENTER_VIN_MODAL:
+      return {
+        ...state,
+        showEnterVINModal: payload
+      };
   }
 }
 
 export default function Index(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const { hasCameraPermission, showHelpModal } = state;
+  const { hasCameraPermission, showHelpModal, showEnterVINModal } = state;
 
   React.useEffect(() => {
     async function requestCameraAccess() {
@@ -69,6 +77,7 @@ export default function Index(props) {
 
   return (
     <View style={{ flex: 1 }}>
+      <EnterVINModal dispatch={dispatch} showEnterVINModal={showEnterVINModal} />
       <HelpModal dispatch={dispatch} showHelpModal={showHelpModal} />
       {hasCameraPermission && (
         <Scan state={state} dispatch={dispatch} goBackToWelcomeScreen={goBackToWelcomeScreen} />

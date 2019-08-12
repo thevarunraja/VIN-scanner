@@ -41,7 +41,6 @@ export default function Index() {
       <HelperCard>
         VIN Number should contain
         <Text small bold primary>
-          {' '}
           10-18 alpha numeric characters
         </Text>
         , no spaces or dashes.

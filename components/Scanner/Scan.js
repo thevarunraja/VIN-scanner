@@ -8,9 +8,10 @@ import { Grid, Col } from 'react-native-easy-grid';
 import Flash from '../../svg/Flash';
 import Cross from '../../svg/Cross';
 import Help from '../../svg/Help';
+import KeyboardIcon from '../../svg/Keyboard';
 import BarCode from '../../svg/BarCode';
 import { Headline } from '../Typography';
-import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL } from './actionTypes';
+import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL, SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
 import { useTheme } from '../Theme';
 
 export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
@@ -60,6 +61,15 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
                           payload: Camera.Constants.FlashMode.off
                         });
                       }
+                    }}
+                  />
+                  <IconButton
+                    icon={() => <KeyboardIcon width={30} height={30} />}
+                    onPress={() => {
+                      dispatch({
+                        type: SET_SHOW_ENTER_VIN_MODAL,
+                        payload: true
+                      });
                     }}
                   />
                   <IconButton

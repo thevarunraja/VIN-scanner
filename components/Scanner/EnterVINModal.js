@@ -5,15 +5,18 @@ import Modal from 'react-native-modal';
 
 import { useTheme } from '../Theme';
 import ArrowLeft from '../../svg/ArrowLeft';
-import { Text, Title, Subheading } from '../Typography';
-import { SET_SHOW_HELP_MODAL } from './actionTypes';
+import { Title, Subheading } from '../Typography';
+import VINTextField from '../VINTextField';
+import { SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
 
-export default function HelpModal({ dispatch, showHelpModal }) {
+//FIXME: Pull the modal header component into a separate component.
+
+export default function EnterVINModal({ dispatch, showEnterVINModal }) {
   const { theme } = useTheme();
   return (
     <Modal
       style={{ flex: 1, backgroundColor: `${theme.colors.background}`, margin: 0 }}
-      isVisible={showHelpModal}
+      isVisible={showEnterVINModal}
       animationIn="slideInRight"
       animationOut="slideOutRight">
       <SafeAreaView style={{ flex: 1, backgroundColor: `${theme.colors.primary}` }}>
@@ -32,27 +35,21 @@ export default function HelpModal({ dispatch, showHelpModal }) {
                 icon={() => <ArrowLeft stroke="#fff" width="30" height="30" />}
                 onPress={() =>
                   dispatch({
-                    type: SET_SHOW_HELP_MODAL,
+                    type: SET_SHOW_ENTER_VIN_MODAL,
                     payload: false
                   })
                 }
               />
             </View>
             <View>
-              <Title style={{ color: `${theme.colors.white}` }}>Scanner Help</Title>
+              <Title style={{ color: `${theme.colors.white}` }}>Enter VIN</Title>
             </View>
           </View>
         </View>
         <View style={{ flex: 1, backgroundColor: `${theme.colors.background}`, padding: 15 }}>
-          <Subheading>Scanning Tips</Subheading>
-          <View style={{ marginTop: 15 }}>
-            <Text>1. Hold the Camera steady and try to center the code you're scanning</Text>
-            <Text style={{ marginTop: 10 }}>
-              2. Try turning on the flash if it's too dark to scan.
-            </Text>
-            <Text style={{ marginTop: 10 }}>
-              3. You can also enter VIN number Manually and decode the Vehicle Information
-            </Text>
+          <Subheading>Enter VIN Manually.</Subheading>
+          <View style={{ marginTop: 20 }}>
+            <VINTextField />
           </View>
         </View>
       </SafeAreaView>
