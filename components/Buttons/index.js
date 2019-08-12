@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Text, IconButton } from 'react-native-paper';
 
 import { useTheme } from '../Theme';
-import ArrowLeft from '../../svg/ArrowLeft';
+import ArrowLeftIcon from '../../svg/ArrowLeftIcon';
 
 PrimaryBtn.propTypes = {
   children: PropTypes.string.isRequired,
@@ -57,5 +57,5 @@ BackButton.propTypes = {
 };
 export function BackButton(props) {
   const { style, ...rest } = props;
-  return <IconButton icon={() => <ArrowLeft stroke="#000" />} style={{ ...style }} {...rest} />;
+  return <IconButton icon={() => <ArrowLeftIcon stroke="#000" />} style={{ ...style }} {...rest} />;
 }

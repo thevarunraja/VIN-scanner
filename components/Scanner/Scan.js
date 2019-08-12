@@ -5,11 +5,11 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import { IconButton } from 'react-native-paper';
 import { Grid, Col } from 'react-native-easy-grid';
 
-import Flash from '../../svg/Flash';
-import Cross from '../../svg/Cross';
-import Help from '../../svg/Help';
-import KeyboardIcon from '../../svg/Keyboard';
-import BarCode from '../../svg/BarCode';
+import FlashIcon from '../../svg/FlashIcon';
+import CrossIcon from '../../svg/CrossIcon';
+import HelpIcon from '../../svg/HelpIcon';
+import KeyboardIcon from '../../svg/KeyboardIcon';
+import BarCodeIcon from '../../svg/BarCodeIcon';
 import { Headline } from '../Typography';
 import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL, SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
 import { useTheme } from '../Theme';
@@ -43,12 +43,15 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
           <View style={styles.cameraTopBar}>
             <Grid>
               <Col style={{ width: `30%` }}>
-                <IconButton icon={() => <Cross stroke="#fff" />} onPress={goBackToWelcomeScreen} />
+                <IconButton
+                  icon={() => <CrossIcon stroke="#fff" />}
+                  onPress={goBackToWelcomeScreen}
+                />
               </Col>
               <Col style={{ width: `70%`, alignItems: `flex-end` }}>
                 <View style={{ flexDirection: `row` }}>
                   <IconButton
-                    icon={() => <Flash />}
+                    icon={() => <FlashIcon />}
                     onPress={() => {
                       if (toggleFlash === 0) {
                         dispatch({
@@ -73,7 +76,7 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
                     }}
                   />
                   <IconButton
-                    icon={() => <Help stroke="#fff" />}
+                    icon={() => <HelpIcon stroke="#fff" />}
                     onPress={() => {
                       dispatch({
                         type: SET_SHOW_HELP_MODAL,
@@ -101,7 +104,7 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
                 alignItems: `center`,
                 justifyContent: `center`
               }}>
-              <BarCode stroke="#000" width={48} height={48} />
+              <BarCodeIcon stroke="#000" width={48} height={48} />
               <View
                 style={{
                   borderWidth: 1,

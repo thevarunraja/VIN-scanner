@@ -4,7 +4,7 @@ import { IconButton } from 'react-native-paper';
 import Modal from 'react-native-modal';
 
 import { useTheme } from '../Theme';
-import ArrowLeft from '../../svg/ArrowLeft';
+import ArrowLeftIcon from '../../svg/ArrowLeftIcon';
 import { Title, Subheading } from '../Typography';
 import VINTextField from '../VINTextField';
 import { SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
@@ -32,7 +32,7 @@ export default function EnterVINModal({ dispatch, showEnterVINModal }) {
                 justifyContent: 'center'
               }}>
               <IconButton
-                icon={() => <ArrowLeft stroke="#fff" width="30" height="30" />}
+                icon={() => <ArrowLeftIcon stroke="#fff" width="30" height="30" />}
                 onPress={() =>
                   dispatch({
                     type: SET_SHOW_ENTER_VIN_MODAL,

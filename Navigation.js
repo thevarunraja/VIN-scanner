@@ -6,10 +6,10 @@ import IntroScreen from './screens/IntroScreen';
 import ScannerScreen from './screens/ScannerScreen';
 import ListScreen from './screens/ListScreen';
 import AccountScreen from './screens/AccountScreen';
-import HomeIcon from './svg/Home';
-import User from './svg/User';
-import List from './svg/List';
-import BarcodeIcon from './svg/BarCode';
+import HomeIcon from './svg/HomeIcon';
+import UserIcon from './svg/UserIcon';
+import ListIcon from './svg/ListIcon';
+import BarcodeIcon from './svg/BarCodeIcon';
 
 const AppBottomNavigator = createBottomTabNavigator(
   {
@@ -38,7 +38,7 @@ const AppBottomNavigator = createBottomTabNavigator(
       navigationOptions: {
         title: 'Scanned',
         tabBarIcon: tabInfo => (
-          <IconButton icon={() => <List stroke={tabInfo.tintColor} width={26} height={26} />} />
+          <IconButton icon={() => <ListIcon stroke={tabInfo.tintColor} width={26} height={26} />} />
         )
       }
     },
@@ -47,7 +47,7 @@ const AppBottomNavigator = createBottomTabNavigator(
       navigationOptions: {
         title: 'Profile',
         tabBarIcon: tabInfo => (
-          <IconButton icon={() => <User stroke={tabInfo.tintColor} width={26} height={26} />} />
+          <IconButton icon={() => <UserIcon stroke={tabInfo.tintColor} width={26} height={26} />} />
         )
       }
     }
