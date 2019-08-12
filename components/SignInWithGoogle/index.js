@@ -95,10 +95,10 @@ export default function Index() {
 
   return (
     <ImageButton
-      width={250}
+      width={260}
       height={60}
       text=""
-      source={require('../../assets/images/Google_Signin.png')}
+      source={require('../../assets/images/Google_SignIn.png')}
       onPress={() => {
         signInWithGoogleAsync();
       }}
