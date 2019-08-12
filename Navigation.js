@@ -26,6 +26,7 @@ const AppBottomNavigator = createBottomTabNavigator(
       screen: ScannerScreen,
       navigationOptions: {
         title: 'Scan',
+        tabBarVisible: false,
         tabBarIcon: tabInfo => (
           <IconButton
             icon={() => <BarcodeIcon fill={tabInfo.tintColor} width={26} height={26} />}
