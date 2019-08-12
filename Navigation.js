@@ -56,14 +56,14 @@ const AppBottomNavigator = createBottomTabNavigator(
   {
     tabBarOptions: {
       activeTintColor: `#ff1744`,
-      inactiveTintColor: `#333`,
+      inactiveTintColor: `#55618f`,
       labelStyle: {
         fontFamily: `OpenSans400`,
         fontSize: 14
       },
       style: {
         backgroundColor: '#fff',
-        borderTopColor: `#dcdcdc`,
+        borderTopColor: `#f1f1f1`,
         padding: 15,
         height: 60
       }
