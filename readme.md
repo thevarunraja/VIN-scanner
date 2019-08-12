@@ -11,3 +11,4 @@
 - [ ] add functionality to sync users local storage to the firestore.
 - [ ] add searching and sorting functionality
 - [ ] add logo and splash screen
+- [ ] read colors from colors.json file

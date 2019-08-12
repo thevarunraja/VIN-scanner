@@ -5,20 +5,16 @@ import { Text } from '../components/Typography';
 import { PrimaryBtn } from '../components/Buttons';
 import Layout from '../components/Layout';
 import SignInWithGoogle from '../components/SignInWithGoogle';
-import { useAuthContext } from '../components/Auth';
-import { app } from '../firebaseConfig';
 
 //FIXME: Design and code a new layout for Signed in users and Signed out users.
 
 export default function IntroScreen(props) {
-  const { currentUser } = useAuthContext();
-
   return (
     <Layout>
       <ScrollView>
         <View style={{ marginTop: 20, flex: 1 }}>
           <Text bold style={{ fontSize: 46 }}>
-            Hello {currentUser && currentUser.displayName},
+            Hello,
           </Text>
           <View style={{ marginTop: 20 }}>
             <Text>Use this App to decode the VIN's.</Text>
@@ -26,11 +22,7 @@ export default function IntroScreen(props) {
               To save your scans for future, use the below button to login.
             </Text>
             <View style={{ marginTop: 20 }}>
-              {currentUser ? (
-                <PrimaryBtn onPress={() => app.auth().signOut()}>Sign Out</PrimaryBtn>
-              ) : (
-                <SignInWithGoogle />
-              )}
+              <SignInWithGoogle />
             </View>
           </View>
           <View style={{ marginTop: 20 }}>
