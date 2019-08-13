@@ -16,12 +16,16 @@ Text.propTypes = {
 };
 export function Text(props) {
   const { theme } = useTheme();
-  const { style, bold, small, primary, ...rest } = props;
+  const { style, bold, small, primary, secondary, ...rest } = props;
   return (
     <PaperText
       style={{
         fontSize: small ? 14 : 17,
-        color: primary ? `${theme.colors.primary}` : `${theme.colors.text}`,
+        color: primary
+          ? `${theme.colors.primary}`
+          : secondary
+          ? `${theme.colors.accent}`
+          : `${theme.colors.text}`,
         fontFamily: bold ? `${theme.fonts[600]}` : `${theme.fonts.regular}`,
         ...style
       }}
@@ -69,7 +73,9 @@ export function Title(props) {
   const { theme } = useTheme();
   const { style, ...rest } = props;
   return (
-    <PaperTitle style={{ fontSize: 24, fontFamily: `${theme.fonts.medium}`, ...style }} {...rest}>
+    <PaperTitle
+      style={{ fontSize: 26, fontFamily: `${theme.fonts.medium}`, lineHeight: 30, ...style }}
+      {...rest}>
       {props.children}
     </PaperTitle>
   );
