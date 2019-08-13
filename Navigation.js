@@ -64,8 +64,8 @@ const AppBottomNavigator = createBottomTabNavigator(
       style: {
         backgroundColor: '#fff',
         borderTopColor: `#f1f1f1`,
-        padding: 15,
-        height: 60
+        height: 75,
+        padding: 15
       }
     }
   }
