@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 
 import { ThemeProvider } from './components/Theme';
 import { AuthProvider } from './components/Auth';
+import { AppStateProvider } from './components/AppState';
 import Navigation from './Navigation';
 
 const theme = {
@@ -47,7 +48,9 @@ export default function App() {
     <PaperProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <View style={{ flex: 1 }}>{fontLoaded && <Navigation />}</View>
+          <AppStateProvider>
+            <View style={{ flex: 1 }}>{fontLoaded && <Navigation />}</View>
+          </AppStateProvider>
         </AuthProvider>
       </ThemeProvider>
     </PaperProvider>

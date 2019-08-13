@@ -1,29 +1,30 @@
 import React from 'react';
 import { View } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import axios from 'axios';
 
 import { PrimaryBtn } from '../Buttons';
 import { Text } from '../Typography';
 import HelperCard from '../HelperCard';
+import { useAppStateContext } from '../AppState';
 
 export default function Index() {
   const [vinValue, setVinValue] = React.useState('');
   const [buttonWidth, setButtonWidth] = React.useState(10);
+  const { decodeVIN, clearErrorMessages, state } = useAppStateContext();
+  const { fetchedVINData } = state;
   const measureWidth = event => {
     setButtonWidth(event.nativeEvent.layout.width);
   };
 
-  const decodeVIN = async () => {
-    try {
-      const res = await axios.get(
-        `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vinValue.trim()}?format=json`
-      );
-      console.log(res.data);
-    } catch (e) {
-      console.log(e);
+  React.useEffect(() => {
+    clearErrorMessages();
+  }, []);
+
+  React.useEffect(() => {
+    if (fetchedVINData) {
+      setVinValue('');
     }
-  };
+  }, [fetchedVINData]);
 
   return (
     <View>
@@ -34,6 +35,7 @@ export default function Index() {
         onChangeText={text => {
           setVinValue(text.slice(0, 18).replace(/[^\w\s]/gi, ''));
         }}
+        autoCapitalize="characters"
         style={{
           paddingRight: buttonWidth
         }}
@@ -59,7 +61,7 @@ export default function Index() {
           height={50}
           disabled={!(vinValue.length >= 10)}
           onPress={() => {
-            decodeVIN();
+            decodeVIN(vinValue);
           }}>
           Decode
         </PrimaryBtn>

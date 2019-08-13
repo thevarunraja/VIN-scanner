@@ -50,6 +50,8 @@ function reducer(state = {}, { type, payload }) {
         ...state,
         showEnterVINModal: payload
       };
+    default:
+      return state;
   }
 }
 
