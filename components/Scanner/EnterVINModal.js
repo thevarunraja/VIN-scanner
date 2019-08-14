@@ -8,6 +8,7 @@ import ArrowLeftIcon from '../../svg/ArrowLeftIcon';
 import { Title, Subheading } from '../Typography';
 import VINTextField from '../VINTextField';
 import { SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
+import DecodedDialog from '../DecodedDialog';
 
 //FIXME: Pull the modal header component into a separate component.
 
@@ -52,6 +53,7 @@ export default function EnterVINModal({ dispatch, showEnterVINModal }) {
             <VINTextField />
           </View>
         </View>
+        <DecodedDialog visible={true} />
       </SafeAreaView>
     </Modal>
   );

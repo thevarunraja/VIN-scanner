@@ -34,18 +34,26 @@ export function PrimaryBtn(props) {
 
 OutlineBtn.propTypes = {
   children: PropTypes.string.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  contentStyle: PropTypes.object,
+  textStyle: PropTypes.object
 };
 export function OutlineBtn(props) {
   const { theme } = useTheme();
-  const { style, ...rest } = props;
+  const { style, contentStyle, textStyle, ...rest } = props;
   return (
     <Button
       mode="outlined"
-      contentStyle={{ height: 45 }}
+      contentStyle={{ height: 45, ...contentStyle }}
       style={{ borderRadius: 2, ...style }}
       {...rest}>
-      <Text style={{ color: `${theme.colors.text}`, fontFamily: `OpenSans600`, fontSize: 18 }}>
+      <Text
+        style={{
+          color: `${theme.colors.text}`,
+          fontFamily: `OpenSans600`,
+          fontSize: 18,
+          ...textStyle
+        }}>
         {props.children}
       </Text>
     </Button>
