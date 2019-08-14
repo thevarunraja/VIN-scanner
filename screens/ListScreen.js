@@ -34,6 +34,8 @@ export default function ListScreen() {
           return (
             <Swipeable
               key={item.VIN}
+              rightActionActivationDistance={250}
+              onRightActionRelease={() => deleteVIN(item.VIN)}
               rightButtons={[
                 <TouchableOpacity
                   activeOpacity={0.8}
@@ -69,7 +71,9 @@ export default function ListScreen() {
                         alignItems: `flex-end`
                       }}>
                       <Text secondary small>
-                        12/22/19
+                        {`${new Date(item.timeStamp).getMonth() + 1}/${new Date(
+                          item.timeStamp
+                        ).getMonth() + 1}/${new Date(item.timeStamp).getFullYear()}`}
                       </Text>
                       <RightChevronIcon width={18} height={18} />
                     </View>
