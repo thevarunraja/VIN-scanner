@@ -5,7 +5,6 @@ import { Text } from '../components/Typography';
 import { PrimaryBtn } from '../components/Buttons';
 import Layout from '../components/Layout';
 import SignInWithGoogle from '../components/SignInWithGoogle';
-import DecodedDialog from '../components/DecodedDialog';
 
 //FIXME: Design and code a new layout for Signed in users and Signed out users.
 
@@ -42,7 +41,6 @@ export default function IntroScreen(props) {
           </View>
         </View>
       </ScrollView>
-      <DecodedDialog visible />
     </Layout>
   );
 }

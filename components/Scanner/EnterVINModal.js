@@ -9,10 +9,14 @@ import { Title, Subheading } from '../Typography';
 import VINTextField from '../VINTextField';
 import { SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
 import DecodedDialog from '../DecodedDialog';
+import { useAppStateContext } from '../AppState';
 
 //FIXME: Pull the modal header component into a separate component.
 
 export default function EnterVINModal({ dispatch, showEnterVINModal }) {
+  const {
+    state: { isFetchingVINData, fetchedVINData }
+  } = useAppStateContext();
   const { theme } = useTheme();
   return (
     <Modal
@@ -53,7 +57,7 @@ export default function EnterVINModal({ dispatch, showEnterVINModal }) {
             <VINTextField />
           </View>
         </View>
-        <DecodedDialog visible={true} />
+        <DecodedDialog visible={isFetchingVINData || fetchedVINData} onClose={() => {}} />
       </SafeAreaView>
     </Modal>
   );
