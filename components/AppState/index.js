@@ -59,9 +59,7 @@ function AppStateProvider(props) {
   }, []);
 
   React.useEffect(() => {
-    if (decodedVINS.length >= 1) {
-      _storeData(decodedVINS);
-    }
+    _storeData(decodedVINS);
   }, [decodedVINS]);
 
   const _storeData = async obj => {
@@ -95,6 +93,16 @@ function AppStateProvider(props) {
     dispatch({
       type: SET_ERROR_FETCHING_VIN_DATA,
       payload: ''
+    });
+  };
+
+  const deleteVIN = vinNumber => {
+    const updatedVINSObj = decodedVINS.filter(x => x.VIN !== vinNumber);
+    console.log(`upd`);
+    console.log(updatedVINSObj);
+    dispatch({
+      type: SET_DECODED_VINS,
+      payload: updatedVINSObj
     });
   };
 
@@ -170,7 +178,7 @@ function AppStateProvider(props) {
   };
 
   return (
-    <AppStateContext.Provider value={{ state, decodeVIN, clearErrorMessages }}>
+    <AppStateContext.Provider value={{ state, decodeVIN, clearErrorMessages, deleteVIN }}>
       {props.children}
     </AppStateContext.Provider>
   );
