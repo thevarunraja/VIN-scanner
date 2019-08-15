@@ -3,15 +3,13 @@ import { View } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 
-import EnterVINModal from './EnterVINModal';
 import HelpModal from './HelpModal';
 import Scan from './Scan';
 import {
   TOGGLE_FLASH,
   SET_IS_SCANNING,
   SET_SHOW_HELP_MODAL,
-  SET_HAS_CAMERA_PERMISSION,
-  SET_SHOW_ENTER_VIN_MODAL
+  SET_HAS_CAMERA_PERMISSION
 } from './actionTypes';
 
 const initialState = {
@@ -19,8 +17,7 @@ const initialState = {
   cameraType: Camera.Constants.Type.back,
   toggleFlash: Camera.Constants.FlashMode.off,
   isScanning: true,
-  showHelpModal: false,
-  showEnterVINModal: false
+  showHelpModal: false
 };
 
 function reducer(state = {}, { type, payload }) {
@@ -45,11 +42,6 @@ function reducer(state = {}, { type, payload }) {
         ...state,
         showHelpModal: payload
       };
-    case SET_SHOW_ENTER_VIN_MODAL:
-      return {
-        ...state,
-        showEnterVINModal: payload
-      };
     default:
       return state;
   }
@@ -57,7 +49,7 @@ function reducer(state = {}, { type, payload }) {
 
 export default function Index(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const { hasCameraPermission, showHelpModal, showEnterVINModal } = state;
+  const { hasCameraPermission, showHelpModal } = state;
 
   React.useEffect(() => {
     async function requestCameraAccess() {
@@ -77,12 +69,20 @@ export default function Index(props) {
     props.navigation.navigate(`IntroScreen`);
   };
 
+  const goToEnterVINScreen = () => {
+    props.navigation.navigate(`EnterVINScreen`);
+  };
+
   return (
     <View style={{ flex: 1 }}>
-      <EnterVINModal dispatch={dispatch} showEnterVINModal={showEnterVINModal} />
       <HelpModal dispatch={dispatch} showHelpModal={showHelpModal} />
       {hasCameraPermission && (
-        <Scan state={state} dispatch={dispatch} goBackToWelcomeScreen={goBackToWelcomeScreen} />
+        <Scan
+          state={state}
+          dispatch={dispatch}
+          goBackToWelcomeScreen={goBackToWelcomeScreen}
+          goToEnterVINScreen={goToEnterVINScreen}
+        />
       )}
     </View>
   );

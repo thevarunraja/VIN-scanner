@@ -1,15 +1,36 @@
 import React from 'react';
-import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import {
+  createAppContainer,
+  createBottomTabNavigator,
+  createStackNavigator
+} from 'react-navigation';
 import { IconButton } from 'react-native-paper';
 
 import IntroScreen from './screens/IntroScreen';
 import ScannerScreen from './screens/ScannerScreen';
 import ListScreen from './screens/ListScreen';
 import AccountScreen from './screens/AccountScreen';
+import EnterVINScreen from './screens/EnterVINScreen';
 import HomeIcon from './svg/HomeIcon';
 import UserIcon from './svg/UserIcon';
 import ListIcon from './svg/ListIcon';
 import BarcodeIcon from './svg/BarCodeIcon';
+
+const ScannerScreenStackNavigator = createStackNavigator(
+  {
+    ScannerScreen: {
+      screen: ScannerScreen
+    },
+    EnterVINScreen: {
+      screen: EnterVINScreen
+    }
+  },
+  {
+    initialRouteName: `ScannerScreen`
+  }
+);
+
+const ScannerScreenStackNavigatorContainer = createAppContainer(ScannerScreenStackNavigator);
 
 const AppBottomNavigator = createBottomTabNavigator(
   {
@@ -23,7 +44,7 @@ const AppBottomNavigator = createBottomTabNavigator(
       }
     },
     ScannerScreen: {
-      screen: ScannerScreen,
+      screen: ScannerScreenStackNavigatorContainer,
       navigationOptions: {
         title: 'Scan',
         tabBarVisible: false,

@@ -14,7 +14,7 @@ import { Headline } from '../Typography';
 import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL, SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
 import { useTheme } from '../Theme';
 
-export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
+export default function Scan({ state, dispatch, goBackToWelcomeScreen, goToEnterVINScreen }) {
   const { theme } = useTheme();
   const { cameraType, toggleFlash, isScanning } = state;
 
@@ -69,10 +69,7 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen }) {
                   <IconButton
                     icon={() => <KeyboardIcon width={30} height={30} />}
                     onPress={() => {
-                      dispatch({
-                        type: SET_SHOW_ENTER_VIN_MODAL,
-                        payload: true
-                      });
+                      goToEnterVINScreen();
                     }}
                   />
                   <IconButton
