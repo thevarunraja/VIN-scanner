@@ -11,7 +11,7 @@ import HelpIcon from '../../svg/HelpIcon';
 import KeyboardIcon from '../../svg/KeyboardIcon';
 import BarCodeIcon from '../../svg/BarCodeIcon';
 import { Headline } from '../Typography';
-import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL, SET_SHOW_ENTER_VIN_MODAL } from './actionTypes';
+import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL } from './actionTypes';
 import { useTheme } from '../Theme';
 
 export default function Scan({ state, dispatch, goBackToWelcomeScreen, goToEnterVINScreen }) {

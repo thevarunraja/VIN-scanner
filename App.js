@@ -8,6 +8,10 @@ import { AuthProvider } from './components/Auth';
 import { AppStateProvider } from './components/AppState';
 import Navigation from './Navigation';
 
+global.XMLHttpRequest = global.originalXMLHttpRequest
+  ? global.originalXMLHttpRequest
+  : global.XMLHttpRequest;
+
 const theme = {
   ...DefaultTheme,
   roundness: 2,
