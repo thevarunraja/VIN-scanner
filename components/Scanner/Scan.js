@@ -11,10 +11,16 @@ import HelpIcon from '../../svg/HelpIcon';
 import KeyboardIcon from '../../svg/KeyboardIcon';
 import BarCodeIcon from '../../svg/BarCodeIcon';
 import { Headline } from '../Typography';
-import { TOGGLE_FLASH, SET_SHOW_HELP_MODAL } from './actionTypes';
+import { TOGGLE_FLASH } from './actionTypes';
 import { useTheme } from '../Theme';
 
-export default function Scan({ state, dispatch, goBackToWelcomeScreen, goToEnterVINScreen }) {
+export default function Scan({
+  state,
+  dispatch,
+  goBackToWelcomeScreen,
+  goToEnterVINScreen,
+  goToHelpScreen
+}) {
   const { theme } = useTheme();
   const { cameraType, toggleFlash, isScanning } = state;
 
@@ -75,10 +81,7 @@ export default function Scan({ state, dispatch, goBackToWelcomeScreen, goToEnter
                   <IconButton
                     icon={() => <HelpIcon stroke="#fff" />}
                     onPress={() => {
-                      dispatch({
-                        type: SET_SHOW_HELP_MODAL,
-                        payload: true
-                      });
+                      goToHelpScreen();
                     }}
                   />
                 </View>

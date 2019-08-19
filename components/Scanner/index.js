@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 
-import HelpModal from './HelpModal';
 import Scan from './Scan';
 import {
   TOGGLE_FLASH,
@@ -49,7 +48,7 @@ function reducer(state = {}, { type, payload }) {
 
 export default function Index(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const { hasCameraPermission, showHelpModal } = state;
+  const { hasCameraPermission } = state;
 
   React.useEffect(() => {
     async function requestCameraAccess() {
@@ -73,15 +72,19 @@ export default function Index(props) {
     props.navigation.navigate(`EnterVINScreen`);
   };
 
+  const goToHelpScreen = () => {
+    props.navigation.navigate(`HelpScreen`);
+  };
+
   return (
     <View style={{ flex: 1 }}>
-      <HelpModal dispatch={dispatch} showHelpModal={showHelpModal} />
       {hasCameraPermission && (
         <Scan
           state={state}
           dispatch={dispatch}
           goBackToWelcomeScreen={goBackToWelcomeScreen}
           goToEnterVINScreen={goToEnterVINScreen}
+          goToHelpScreen={goToHelpScreen}
         />
       )}
     </View>

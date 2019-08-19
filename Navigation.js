@@ -11,6 +11,7 @@ import ScannerScreen from './screens/ScannerScreen';
 import ListScreen from './screens/ListScreen';
 import AccountScreen from './screens/AccountScreen';
 import EnterVINScreen from './screens/EnterVINScreen';
+import HelpScreen from './screens/HelpScreen';
 import HomeIcon from './svg/HomeIcon';
 import UserIcon from './svg/UserIcon';
 import ListIcon from './svg/ListIcon';
@@ -23,6 +24,9 @@ const ScannerScreenStackNavigator = createStackNavigator(
     },
     EnterVINScreen: {
       screen: EnterVINScreen
+    },
+    HelpScreen: {
+      screen: HelpScreen
     }
   },
   {
