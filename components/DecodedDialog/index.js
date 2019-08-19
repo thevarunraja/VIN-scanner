@@ -10,12 +10,13 @@ import { useAppStateContext } from '../AppState';
 
 export default function Index(props) {
   const {
-    state: { isFetchingVINData, fetchedVINData }
+    state: { isFetchingVINData, fetchedVINData, showDecodedDialog },
+    toggleDecodedDialog
   } = useAppStateContext();
   console.log(fetchedVINData);
 
   return (
-    <Dialog visible={props.visible} dismissable={false}>
+    <Dialog visible={showDecodedDialog} dismissable={false}>
       <Dialog.Content style={{ minHeight: 250 }}>
         {isFetchingVINData ? (
           <Loading />
@@ -23,7 +24,10 @@ export default function Index(props) {
           fetchedVINData && (
             <Fragment>
               <View style={{ position: `absolute`, flexDirection: `row`, right: 0 }}>
-                <IconButton icon={() => <CrossIcon stroke="#000" width="30" height="30" />} />
+                <IconButton
+                  icon={() => <CrossIcon stroke="#000" width="30" height="30" />}
+                  onPress={() => toggleDecodedDialog(false)}
+                />
               </View>
               <View style={{ marginTop: 0 }}>
                 <Text>

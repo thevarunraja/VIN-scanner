@@ -25,7 +25,7 @@ export default function EnterVIN(props) {
           </View>
         </View>
       </SafeAreaView>
-      <DecodedDialog visible={isFetchingVINData || fetchedVINData} onClose={() => {}} />
+      <DecodedDialog />
     </View>
   );
 }

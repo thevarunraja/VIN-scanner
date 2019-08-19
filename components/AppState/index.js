@@ -9,13 +9,15 @@ const SET_DECODING_ERROR = 'SET_DECODING_ERROR';
 const SET_ERROR_FETCHING_VIN_DATA = 'SET_ERROR_FETCHING_VIN_DATA';
 const SET_IS_FETCHING_VIN_DATA = 'SET_IS_FETCHING_VIN_DATA';
 const SET_FETCHED_VIN_DATA = 'SET_FETCHED_VIN_DATA';
+const SHOW_DECODED_DIALOG = 'SHOW_DECODED_DIALOG';
 
 const initialState = {
   decodedVINS: [], //Contains all the decoded VIN's
   decodingError: '',
   errrFetchingVINData: '',
   isFetchingVINData: false,
-  fetchedVINData: null
+  fetchedVINData: null,
+  showDecodedDialog: false
 };
 
 function reducer(state = {}, { type, payload }) {
@@ -44,6 +46,11 @@ function reducer(state = {}, { type, payload }) {
       return {
         ...state,
         fetchedVINData: payload
+      };
+    case SHOW_DECODED_DIALOG:
+      return {
+        ...state,
+        showDecodedDialog: payload
       };
     default:
       return state;
@@ -134,6 +141,7 @@ function AppStateProvider(props) {
   };
 
   const decodeVIN = async vin => {
+    toggleDecodedDialog(true);
     try {
       dispatch({
         type: SET_IS_FETCHING_VIN_DATA,
@@ -177,8 +185,16 @@ function AppStateProvider(props) {
     }
   };
 
+  const toggleDecodedDialog = isVisible => {
+    dispatch({
+      type: SHOW_DECODED_DIALOG,
+      payload: isVisible
+    });
+  };
+
   return (
-    <AppStateContext.Provider value={{ state, decodeVIN, clearErrorMessages, deleteVIN }}>
+    <AppStateContext.Provider
+      value={{ state, decodeVIN, clearErrorMessages, deleteVIN, toggleDecodedDialog }}>
       {props.children}
     </AppStateContext.Provider>
   );
