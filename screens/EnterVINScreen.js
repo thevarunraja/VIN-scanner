@@ -11,16 +11,6 @@ import DecodedDialog from '../components/DecodedDialog';
 export default function EnterVIN(props) {
   const { theme } = useTheme();
 
-  const navigateAction = NavigationActions.navigate({
-    routeName: 'ListScreen',
-    action: NavigationActions.navigate(
-      StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'ScannerScreen' })]
-      })
-    )
-  });
-
   return (
     <View style={{ flex: 1 }}>
       <TopBar navigation={props.navigation} title={'Enter VIN'} />
@@ -34,6 +24,14 @@ export default function EnterVIN(props) {
       </SafeAreaView>
       <DecodedDialog
         navigateToHome={() => {
+          const navigateAction = NavigationActions.navigate({
+            routeName: 'ListScreen'
+          });
+          const resetAction = StackActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: 'ScannerScreen' })]
+          });
+          props.navigation.dispatch(resetAction);
           props.navigation.dispatch(navigateAction);
         }}
       />
