@@ -30,7 +30,10 @@ export default function Index(props) {
                 />
               </View>
               <View style={{ marginTop: 0 }}>
-                <Text>
+                <Text primary bold>
+                  Decoded Successfully.
+                </Text>
+                <Text style={{ marginTop: 10 }}>
                   <Text small secondary style={{ letterSpacing: 0.5 }}>
                     VIN:{' '}
                   </Text>
@@ -67,7 +70,13 @@ export default function Index(props) {
                 <OutlineBtn contentStyle={{ height: 35 }} textStyle={{ fontSize: 14 }}>
                   More Info
                 </OutlineBtn>
-                <OutlineBtn contentStyle={{ height: 35 }} textStyle={{ fontSize: 14 }}>
+                <OutlineBtn
+                  contentStyle={{ height: 35 }}
+                  textStyle={{ fontSize: 14 }}
+                  onPress={() => {
+                    toggleDecodedDialog(false);
+                    props.navigateToHome();
+                  }}>
                   Vehicles List
                 </OutlineBtn>
               </View>
