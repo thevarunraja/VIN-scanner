@@ -12,6 +12,7 @@ import ListScreen from './screens/ListScreen';
 import AccountScreen from './screens/AccountScreen';
 import EnterVINScreen from './screens/EnterVINScreen';
 import HelpScreen from './screens/HelpScreen';
+import VehicleInfoScreen from './screens/VehicleInfoScreen';
 import HomeIcon from './svg/HomeIcon';
 import UserIcon from './svg/UserIcon';
 import ListIcon from './svg/ListIcon';
@@ -35,6 +36,17 @@ const ScannerScreenStackNavigator = createStackNavigator(
 );
 
 const ScannerScreenStackNavigatorContainer = createAppContainer(ScannerScreenStackNavigator);
+
+const ListScreenStackNavigator = createStackNavigator({
+  ListScreen: {
+    screen: ListScreen
+  },
+  VehicleInfoScreen: {
+    screen: VehicleInfoScreen
+  }
+});
+
+const ListScreenStackNavigatorContainer = createAppContainer(ListScreenStackNavigator);
 
 const AppBottomNavigator = createBottomTabNavigator(
   {
@@ -60,7 +72,7 @@ const AppBottomNavigator = createBottomTabNavigator(
       }
     },
     ListScreen: {
-      screen: ListScreen,
+      screen: ListScreenStackNavigatorContainer,
       navigationOptions: {
         title: 'Scanned',
         tabBarIcon: tabInfo => (

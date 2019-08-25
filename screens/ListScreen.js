@@ -9,7 +9,7 @@ import { useAppStateContext } from '../components/AppState';
 import RightChevronIcon from '../svg/RightChevronIcon';
 import DeleteIcon from '../svg/DeleteIcon';
 
-export default function ListScreen() {
+export default function ListScreen(props) {
   const {
     state: { decodedVINS },
     deleteVIN
@@ -56,7 +56,11 @@ export default function ListScreen() {
                   </View>
                 </TouchableOpacity>
               ]}>
-              <View>
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => {
+                  props.navigation.navigate(`VehicleInfoScreen`);
+                }}>
                 <View style={{ paddingTop: 10, paddingBottom: 15 }}>
                   <View style={{ flexDirection: `row` }}>
                     <View style={{ width: `75%` }}>
@@ -86,7 +90,7 @@ export default function ListScreen() {
                   </Text>
                 </View>
                 <Divider />
-              </View>
+              </TouchableOpacity>
             </Swipeable>
           );
         }}
@@ -94,3 +98,7 @@ export default function ListScreen() {
     </Layout>
   );
 }
+
+ListScreen.navigationOptions = {
+  header: null
+};
